@@ -1,0 +1,13 @@
+name: marlin_manual_build
+
+on: 
+  workflow_dispatch:
+  push:
+    paths:
+      - 'builds/**'
+
+jobs:
+  create_builds:
+    runs-on: ubuntu-latest 
+    steps:
+    - uses: zisismaras/marlin_auto_build@master
