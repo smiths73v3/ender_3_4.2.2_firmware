@@ -1,14 +1,17 @@
 name: marlin_manual_build
 
-on: 
+on:
   workflow_dispatch:
   push:
     paths:
       - 'builds/**'
 
+permissions:
+  contents: write
+
 jobs:
   create_builds:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
     steps:
       - name: marlin_auto_build
         uses: smiths73v3/marlin_auto_build@master
