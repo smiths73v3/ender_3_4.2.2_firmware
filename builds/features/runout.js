@@ -3,13 +3,13 @@ module.exports = {
     configuration: {
         enable: [
             "FILAMENT_RUNOUT_SENSOR",
-            "ADVANCED_PAUSE_FEATURE",
         ],
         disable: [
         ]
     },
     configuration_adv: {
         enable: [
+            "ADVANCED_PAUSE_FEATURE",
         ]
     }
 };
