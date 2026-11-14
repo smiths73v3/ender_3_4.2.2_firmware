@@ -3,6 +3,7 @@ module.exports = {
     configuration: {
         enable: [
             "FILAMENT_RUNOUT_SENSOR",
+            "NOZZLE_PARK_FEATURE",
         ],
         disable: [
         ]
