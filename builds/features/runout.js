@@ -4,6 +4,7 @@ module.exports = {
         enable: [
             "FILAMENT_RUNOUT_SENSOR",
             "NOZZLE_PARK_FEATURE",
+            ["EXTRUDE_MINTEMP", "230"],
         ],
         disable: [
         ]
