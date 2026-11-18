@@ -13,7 +13,10 @@ module.exports = {
             ["NOZZLE_TO_PROBE_OFFSET", [0, 0, 0]],
 
             //M48 test
-            "Z_MIN_PROBE_REPEATABILITY_TEST"
+            "Z_MIN_PROBE_REPEATABILITY_TEST",
+            
+            //After G28 Home, restore whatever bed level state was
+            "RESTORE_LEVELING_AFTER_G28"
         ],
         disable: [
             "Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN"
