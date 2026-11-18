@@ -128,6 +128,18 @@
   //#define RS485_BUS_BUFFER_SIZE 128
 #endif
 
+/**
+ * CAN bus
+ * Use the board's CAN port (CAN_RX_PIN / CAN_TX_PIN) to talk to CAN devices,
+ * such as toolhead boards running Klipper. Classic CAN 2.0 frames only.
+ * Requires an STM32 with bxCAN (F1/F2/F4/F7) or FDCAN (G0/G4/H7), and a CAN transceiver.
+ * M960 reports the bus state and lists Klipper / Katapult nodes found on the bus.
+ */
+//#define CAN_BUS
+#if ENABLED(CAN_BUS)
+  #define CAN_BITRATE 1000000 // (bits/s) All nodes must agree. Klipper's default is 1000000.
+#endif
+
 // Enable the Bluetooth serial interface on AT90USB devices
 //#define BLUETOOTH
 
@@ -956,7 +968,7 @@
  * *** IT IS HIGHLY RECOMMENDED TO LEAVE THIS OPTION ENABLED! ***
  */
 #define PREVENT_COLD_EXTRUSION
-#define EXTRUDE_MINTEMP 170
+#define EXTRUDE_MINTEMP 230 //ORIGINAL: #define EXTRUDE_MINTEMP 170
 
 /**
  * Prevent a single extrusion longer than EXTRUDE_MAXLENGTH.
@@ -2457,6 +2469,18 @@
   #define Z_SAFE_HOMING_Y_POINT Y_CENTER  // (mm) Y point for Z homing
   //#define Z_SAFE_HOMING_POINT_ABSOLUTE  // Ignore home offsets (M206) for Z homing position
 #endif
+
+/**
+ * Precise Z Homing
+ *
+ * Enables the 'G28 P' parameter. After Z homes, 'G28 P' probes at the same XY
+ * with the bed probe and corrects Z by the measured error. Uses the same
+ * settings as bed leveling, including MULTIPLE_PROBING, EXTRA_PROBING, and
+ * PROBING_HEATERS_OFF. Useful for probes that are intermittently inaccurate.
+ * Consider Z_SAFE_HOMING, and setting the Z value of HOMING_BUMP_MM to 0.
+ * Requires a bed probe.
+ */
+//#define PRECISE_Z_HOMING
 
 // Homing speeds (linear=mm/min, rotational=°/min)
 #define HOMING_FEEDRATE_MM_M { (20*60), (20*60), (4*60) }
